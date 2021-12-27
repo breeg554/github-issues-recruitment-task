@@ -1,6 +1,10 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../styled/theme";
+import { GlobalStyle } from "../styled/global";
+import { MainLayout } from "../components";
 
 const ErrorFallback = () => {
   return (
@@ -20,7 +24,12 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <Suspense fallback={<span>Loading...</span>}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <Router>{children}</Router>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Router>
+            <MainLayout>{children}</MainLayout>
+          </Router>
+        </ThemeProvider>
       </ErrorBoundary>
     </Suspense>
   );
