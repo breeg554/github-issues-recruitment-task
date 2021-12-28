@@ -1,10 +1,12 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ApolloProvider } from "@apollo/client";
 import { ErrorBoundary } from "react-error-boundary";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../styled/theme";
 import { GlobalStyle } from "../styled/global";
 import { MainLayout } from "../components";
+import { client } from "../lib/apollo";
 
 const ErrorFallback = () => {
   return (
@@ -24,12 +26,14 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <Suspense fallback={<span>Loading...</span>}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <Router>
-            <MainLayout>{children}</MainLayout>
-          </Router>
-        </ThemeProvider>
+        <ApolloProvider client={client}>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <Router>
+              <MainLayout>{children}</MainLayout>
+            </Router>
+          </ThemeProvider>
+        </ApolloProvider>
       </ErrorBoundary>
     </Suspense>
   );
