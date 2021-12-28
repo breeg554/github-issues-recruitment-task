@@ -5,6 +5,8 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "../styled/theme";
 import { GlobalStyle } from "../styled/global";
 import { MainLayout } from "../components";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "../lib/apollo";
 
 const ErrorFallback = () => {
   return (
@@ -24,12 +26,14 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <Suspense fallback={<span>Loading...</span>}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <Router>
-            <MainLayout>{children}</MainLayout>
-          </Router>
-        </ThemeProvider>
+        <ApolloProvider client={client}>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <Router>
+              <MainLayout>{children}</MainLayout>
+            </Router>
+          </ThemeProvider>
+        </ApolloProvider>
       </ErrorBoundary>
     </Suspense>
   );
