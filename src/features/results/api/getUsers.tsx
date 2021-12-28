@@ -14,7 +14,7 @@ const USERS_QUERY = gql`
           avatarUrl
         }
       }
-      repositoryCount
+      dataCount: userCount
     }
   }
 `;

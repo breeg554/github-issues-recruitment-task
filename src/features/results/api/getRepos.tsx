@@ -25,7 +25,7 @@ const REPO_QUERY = gql`
           }
         }
       }
-      repositoryCount
+      dataCount: repositoryCount
     }
   }
 `;

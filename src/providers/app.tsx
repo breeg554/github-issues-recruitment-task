@@ -1,11 +1,11 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ApolloProvider } from "@apollo/client";
 import { ErrorBoundary } from "react-error-boundary";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../styled/theme";
 import { GlobalStyle } from "../styled/global";
 import { MainLayout } from "../components";
-import { ApolloProvider } from "@apollo/client";
 import { client } from "../lib/apollo";
 
 const ErrorFallback = () => {
