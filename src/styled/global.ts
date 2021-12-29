@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-  html{
+  html,button,input,textarea{
     font-family: 'Roboto', sans-serif;
     font-size: 10px;   //1rem = 10px
   }

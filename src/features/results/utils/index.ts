@@ -14,6 +14,9 @@ export const mergeSearchQueries = (queries: QueryResult[]) => {
 
   return { data, dataCount };
 };
+export const removeItemsWithoutId = (data: RepoAndUserArray) => {
+  return [...data].filter((el) => el.id);
+};
 export const sortSearchQueriesById = (data: RepoAndUserArray) => {
   return [...data].sort((a, b) => a.id.localeCompare(b.id));
 };

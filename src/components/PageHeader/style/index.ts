@@ -7,4 +7,17 @@ export const StyledPageHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .github-logo {
+    svg {
+      width: 38px;
+      height: 38px;
+      color: #fff;
+    }
+    &:hover svg {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+  ${({ theme }) => theme.mediaQ.lg} {
+    padding: 17px 20px;
+  }
 `;

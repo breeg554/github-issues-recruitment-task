@@ -7,6 +7,7 @@ import { theme } from "../styled/theme";
 import { GlobalStyle } from "../styled/global";
 import { MainLayout } from "../components";
 import { client } from "../lib/apollo";
+import SearchProvider from "../context/Search";
 
 const ErrorFallback = () => {
   return (
@@ -27,12 +28,14 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     <Suspense fallback={<span>Loading...</span>}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <ApolloProvider client={client}>
-          <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            <Router>
-              <MainLayout>{children}</MainLayout>
-            </Router>
-          </ThemeProvider>
+          <SearchProvider>
+            <ThemeProvider theme={theme}>
+              <GlobalStyle />
+              <Router>
+                <MainLayout>{children}</MainLayout>
+              </Router>
+            </ThemeProvider>
+          </SearchProvider>
         </ApolloProvider>
       </ErrorBoundary>
     </Suspense>

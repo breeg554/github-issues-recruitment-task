@@ -1,11 +1,11 @@
 export interface User {
   id: string;
-  email: string;
+  email?: string;
   name: string;
   login: string;
-  location: string;
-  bio: string;
-  avatarUrl: string;
+  location?: string;
+  bio?: string;
+  avatarUrl?: string;
   __typename: string;
 }
 export interface LicenseInfo {
@@ -32,13 +32,13 @@ export interface Languages {
 export interface Repository {
   id: string;
   name: string;
-  url: string;
+  url?: string;
   updatedAt: Date;
-  stargazerCount: number;
-  licenseInfo: LicenseInfo;
-  issues: Issues;
-  description: string;
-  languages: Languages;
+  stargazerCount?: number;
+  licenseInfo?: LicenseInfo;
+  issues?: Issues;
+  description?: string;
+  languages?: Languages;
   __typename: string;
 }
 
