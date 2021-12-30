@@ -20,3 +20,8 @@ export const removeItemsWithoutId = (data: RepoAndUserArray) => {
 export const sortSearchQueriesById = (data: RepoAndUserArray) => {
   return [...data].sort((a, b) => a.id.localeCompare(b.id));
 };
+
+export const formatNumberBySeparator = (separator: string) => (n: number) =>
+  n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+
+export const formatNumberByComma = formatNumberBySeparator(",");

@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useGetRepos, useGetUsers } from ".";
 import { useSearch } from "../../../context/Search";
-import { RepoAndUserArray } from "../types";
+import { RepoAndUserWithCount } from "../types";
 import {
   mergeSearchQueries,
   removeItemsWithoutId,
@@ -16,10 +16,7 @@ export const useReposAndUsers = () => {
   const mergedData = useMemo(() => {
     if (!reposQuery.data || !usersQuery.data) return; //wait for both queries
 
-    const merged: {
-      data: RepoAndUserArray;
-      dataCount: number;
-    } = mergeSearchQueries([reposQuery, usersQuery]);
+    const merged: RepoAndUserWithCount = mergeSearchQueries([reposQuery, usersQuery]);
     merged.data = removeItemsWithoutId(merged.data);
     merged.data = sortSearchQueriesById(merged.data);
 

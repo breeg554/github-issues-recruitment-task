@@ -8,10 +8,12 @@ export const PageHeader = () => {
   const { searchVal, handleSetSearch } = useSearch();
   return (
     <StyledPageHeader>
-      <Link to="/" className="github-logo" aria-label="Home page">
-        <MarkGithubIcon />
-      </Link>
-      <SearchInput value={searchVal} onChange={handleSetSearch} />
+      <div>
+        <Link to="/" className="github-logo" aria-label="Home page">
+          <MarkGithubIcon />
+        </Link>
+        <SearchInput value={searchVal} onChange={handleSetSearch} />
+      </div>
     </StyledPageHeader>
   );
 };

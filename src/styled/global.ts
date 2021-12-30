@@ -12,5 +12,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   body{
     background-color: #E5E5E5;
+    color: ${({ theme }) => theme.colors.core.primary}
+  }
+  a{
+    color: ${({ theme }) => theme.colors.core.secondary};
+    text-decoration: none;
   }
 `;
