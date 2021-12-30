@@ -1,14 +1,15 @@
+import { useSearch } from "../../../context/Search";
 import { useReposAndUsers } from "../api";
 import { List, Pagination, ListSkeleton } from "../components";
 import { formatNumberByComma } from "../utils";
 import { ListResultNumber } from "./style";
 
 export const Dashboard = () => {
-  const { reposQuery, usersQuery, mergedData } = useReposAndUsers();
+  const { searchVal } = useSearch();
+  const { query, mergedData } = useReposAndUsers(searchVal);
 
-  if (usersQuery.loading || reposQuery.loading) return <ListSkeleton count={10} />;
-  if (usersQuery.error) return <p>{usersQuery.error.message}</p>;
-  if (reposQuery.error) return <p>{reposQuery.error.message}</p>;
+  if (query.loading) return <ListSkeleton count={10} />;
+  if (query.error) return <p>{query.error.message}</p>;
   if (!mergedData || mergedData.data.length === 0) return <p>No data</p>;
 
   return (

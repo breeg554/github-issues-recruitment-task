@@ -1,18 +1,17 @@
-import { QueryResult } from "@apollo/client";
 import { RepoAndUserArray } from "../types";
 
-export const mergeSearchQueries = (queries: QueryResult[]) => {
-  const data: any[] = queries.reduce((arr, curr) => {
-    if (!curr.data || !curr.data.search) return arr;
-    return arr.concat(curr.data.search.nodes);
-  }, []);
+export const mergeSearchResults = (allData: any) => {
+  if (!allData) return undefined;
 
-  const dataCount = queries.reduce((val, curr) => {
-    if (!curr.data || !curr.data.search) return val;
-    return (val += curr.data.search.dataCount);
-  }, 0);
+  return Object.keys(allData).reduce(
+    (tmp, key) => {
+      tmp.dataCount += allData[key].dataCount;
+      tmp.data = [...tmp.data, ...allData[key].edges.map((el: { node: any }) => el.node)];
 
-  return { data, dataCount };
+      return tmp;
+    },
+    { dataCount: 0, data: [] as RepoAndUserArray }
+  );
 };
 export const removeItemsWithoutId = (data: RepoAndUserArray) => {
   return [...data].filter((el) => el.id);

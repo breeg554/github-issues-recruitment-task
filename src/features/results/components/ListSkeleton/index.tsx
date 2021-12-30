@@ -8,7 +8,7 @@ interface ListSkeletonProps {
 
 export const ListSkeleton = ({ count }: ListSkeletonProps) => {
   const array = useMemo(() => Array.from(Array(Math.abs(count)).keys()), [count]);
-  console.log(array);
+
   return (
     <StyledSkeletonsList>
       {array.map((el, index) => (

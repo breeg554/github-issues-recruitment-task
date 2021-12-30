@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-const BASE_COLOR = "#d1d1d1";
+const BASE_COLOR = "#d7d7d7";
 
 const shine = keyframes`
   0% {
