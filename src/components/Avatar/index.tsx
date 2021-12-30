@@ -8,29 +8,32 @@ interface AvatarProps {
   url: string | undefined;
   withLink?: boolean;
   userLogin: string;
+  width?: string;
 }
 
-export const Avatar = memo(({ url, withLink = false, userLogin }: AvatarProps) => {
-  const { handleImageOnLoad, css } = useImageOnLoad();
-  if (withLink)
+export const Avatar = memo(
+  ({ url, withLink = false, userLogin, width = "20px" }: AvatarProps) => {
+    const { handleImageOnLoad, css } = useImageOnLoad();
+    if (withLink)
+      return (
+        <Link to={`/${userLogin}`}>
+          <StyledAvatar width={width}>
+            <img
+              src={url}
+              alt={userLogin}
+              onLoad={handleImageOnLoad}
+              style={{ ...css.fullSize }}
+            />
+            <span className="icon" style={{ ...css.thumbnail }}>
+              <MarkGithubIcon />
+            </span>
+          </StyledAvatar>
+        </Link>
+      );
     return (
-      <Link to={`/${userLogin}`}>
-        <StyledAvatar>
-          <img
-            src={url}
-            alt={userLogin}
-            onLoad={handleImageOnLoad}
-            style={{ ...css.fullSize }}
-          />
-          <span className="icon" style={{ ...css.thumbnail }}>
-            <MarkGithubIcon />
-          </span>
-        </StyledAvatar>
-      </Link>
+      <StyledAvatar width={width}>
+        <img src={url} alt={userLogin} />
+      </StyledAvatar>
     );
-  return (
-    <StyledAvatar>
-      <img src={url} alt={userLogin} />
-    </StyledAvatar>
-  );
-});
+  }
+);
