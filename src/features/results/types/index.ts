@@ -1,7 +1,7 @@
 export interface User {
   id: string;
   email?: string;
-  name: string;
+  name?: string;
   login: string;
   location?: string;
   bio?: string;
@@ -31,7 +31,7 @@ export interface Languages {
 
 export interface Repository {
   id: string;
-  name: string;
+  name?: string;
   url?: string;
   updatedAt: Date;
   stargazerCount?: number;
@@ -43,7 +43,11 @@ export interface Repository {
 }
 
 export type RepoAndUserArray = Array<Repository | User>;
+export type RepoAndUserWithCount = {
+  data: RepoAndUserArray;
+  dataCount: number;
+};
 
 export const isUser = (obj: Repository | User): obj is User => {
-  return (obj as User).login !== undefined;
+  return (obj as User).__typename === "User";
 };
