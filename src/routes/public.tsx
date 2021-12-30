@@ -9,7 +9,7 @@ export const publicRoutes = [
     element: <Dashboard />,
   },
   {
-    path: "/:username",
+    path: "/:login",
     element: <Profile />,
   },
 ];

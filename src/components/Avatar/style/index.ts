@@ -1,10 +1,12 @@
 import styled from "styled-components";
-
-export const StyledAvatar = styled.span`
+interface Props {
+  width: string;
+}
+export const StyledAvatar = styled.span<Props>`
   margin-top: 2px;
   display: block;
-  width: 20px;
-  height: 20px;
+  width: ${({ width }) => width};
+  height: ${({ width }) => width};
   border-radius: 50%;
   overflow: hidden;
   position: relative;
