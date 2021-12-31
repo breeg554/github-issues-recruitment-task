@@ -1,6 +1,6 @@
 import { PeopleIcon } from "@primer/octicons-react";
 import { useParams } from "react-router-dom";
-import { Avatar, StarsCount } from "../../../components";
+import { Avatar, ErrorMessage, StarsCount } from "../../../components";
 import { formatNumberByComma } from "../../../utils/transform";
 import { useUser } from "../api";
 import { ProfileSkeleton } from "../components";
@@ -15,7 +15,7 @@ export const Profile = () => {
       {loading ? (
         <ProfileSkeleton />
       ) : error ? (
-        <p>{error.message}</p>
+        <ErrorMessage msg={error.message} danger />
       ) : !data ? (
         <p>No data</p>
       ) : (

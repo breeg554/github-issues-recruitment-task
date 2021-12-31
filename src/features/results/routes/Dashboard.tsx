@@ -3,6 +3,7 @@ import { useReposAndUsers } from "../api";
 import { List, Pagination, ListSkeleton } from "../components";
 import { formatNumberByComma } from "../../../utils/transform";
 import { ListResultNumber, StyledDashboard } from "./style";
+import { ErrorMessage } from "../../../components";
 
 export const Dashboard = () => {
   const { searchVal } = useSearch();
@@ -13,9 +14,9 @@ export const Dashboard = () => {
       {query.loading ? (
         <ListSkeleton count={10} />
       ) : query.error ? (
-        <p>{query.error.message}</p>
+        <ErrorMessage msg={query.error.message} />
       ) : !mergedData || mergedData.data.length === 0 ? (
-        <p>No data</p>
+        <p style={{ fontSize: "16px" }}>No data</p>
       ) : (
         <>
           <ListResultNumber>

@@ -6,6 +6,7 @@ export const theme = {
       primary: "#24292F",
       secondary: "#166CD7",
       tertiary: "#6F7781",
+      danger: "#cf1322",
     },
     hover: {
       primary: "#353a3F",
