@@ -25,7 +25,7 @@ interface AppProviderProps {
 }
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    <Suspense fallback={<span>Loading...</span>}>
+    <Suspense fallback={""}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <ApolloProvider client={client}>
           <SearchProvider>

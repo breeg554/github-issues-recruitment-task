@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import { useSearch } from "../../../context/Search";
-import { useLazyReposAndUsers } from "../api";
+import { useReposAndUsers } from "../api";
 import { List, Pagination, ListSkeleton } from "../components";
 import { formatNumberByComma } from "../../../utils/transform";
 import { ListResultNumber, StyledDashboard } from "./style";
@@ -10,11 +9,7 @@ import useDebounce from "../../../hooks/useDebounce";
 export const Dashboard = () => {
   const { searchVal } = useSearch();
   const debouncedSearchTerm: string = useDebounce<string>(searchVal, 500);
-  const { getData, query, mergedData } = useLazyReposAndUsers(debouncedSearchTerm);
-
-  useEffect(() => {
-    getData();
-  }, [debouncedSearchTerm, getData]);
+  const { query, mergedData } = useReposAndUsers(debouncedSearchTerm);
 
   return (
     <StyledDashboard>
