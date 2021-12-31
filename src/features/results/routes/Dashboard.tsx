@@ -11,7 +11,7 @@ export const Dashboard = () => {
   const { searchVal } = useSearch();
   const debouncedSearchTerm: string = useDebounce<string>(searchVal, 500);
   const { getData, query, mergedData } = useLazyReposAndUsers(debouncedSearchTerm);
-  console.log(debouncedSearchTerm);
+
   useEffect(() => {
     getData();
   }, [debouncedSearchTerm, getData]);

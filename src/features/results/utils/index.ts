@@ -1,6 +1,8 @@
-import { RepoAndUserArray } from "../types";
+import { hasId, ModifyRepository, ModifyUser, Repository, User } from "../types";
 
-export const mergeSearchResults = (allData: any) => {
+export const mergeSearchResults = (allData: {
+  [name: string]: { dataCount: number; edges: any };
+}) => {
   if (!allData) return undefined;
 
   return Object.keys(allData).reduce(
@@ -10,12 +12,13 @@ export const mergeSearchResults = (allData: any) => {
 
       return tmp;
     },
-    { dataCount: 0, data: [] as RepoAndUserArray }
+    { dataCount: 0, data: [] as (Repository | User)[] }
   );
 };
-export const removeItemsWithoutId = (data: RepoAndUserArray) => {
-  return [...data].filter((el) => el.id);
+export const removeItemsWithoutId = (data: (Repository | User)[]) => {
+  const filtered: (ModifyRepository | ModifyUser)[] = [...data].filter(hasId);
+  return filtered;
 };
-export const sortSearchQueriesById = (data: RepoAndUserArray) => {
+export const sortSearchQueriesById = (data: (ModifyRepository | ModifyUser)[]) => {
   return [...data].sort((a, b) => a.id.localeCompare(b.id));
 };

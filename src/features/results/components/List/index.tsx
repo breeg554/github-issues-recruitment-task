@@ -1,8 +1,8 @@
-import { RepoAndUserWithCount } from "../../types";
+import { ReposAndUsers } from "../../types";
 import { ListEl } from "../ListEl";
 
 interface ListProps {
-  data: RepoAndUserWithCount;
+  data: ReposAndUsers;
 }
 
 export const List = ({ data }: ListProps) => {

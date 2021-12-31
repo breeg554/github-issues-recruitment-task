@@ -1,5 +1,5 @@
 export interface User {
-  id: string;
+  id?: string;
   email?: string;
   name?: string;
   login: string;
@@ -7,6 +7,9 @@ export interface User {
   bio?: string;
   avatarUrl?: string;
   __typename: string;
+}
+export interface ModifyUser extends User {
+  id: string;
 }
 export interface LicenseInfo {
   name: string;
@@ -30,7 +33,7 @@ export interface Languages {
 }
 
 export interface Repository {
-  id: string;
+  id?: string;
   name?: string;
   url?: string;
   updatedAt: Date;
@@ -41,13 +44,17 @@ export interface Repository {
   languages?: Languages;
   __typename: string;
 }
-
-export type RepoAndUserArray = Array<Repository | User>;
-export type RepoAndUserWithCount = {
-  data: RepoAndUserArray;
+export interface ModifyRepository extends Repository {
+  id: string;
+}
+export type ReposAndUsers = {
+  data: (User | Repository)[];
   dataCount: number;
 };
 
 export const isUser = (obj: Repository | User): obj is User => {
   return (obj as User).__typename === "User";
+};
+export const hasId = (obj: Repository | User): obj is ModifyUser | ModifyRepository => {
+  return obj.id !== undefined;
 };
