@@ -1,4 +1,4 @@
-import { GitBranchIcon, MarkGithubIcon } from "@primer/octicons-react";
+import { MarkGithubIcon } from "@primer/octicons-react";
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import useImageOnLoad from "../../hooks/useImageOnLoad";

@@ -1,6 +1,6 @@
 import { gql, useLazyQuery } from "@apollo/client";
 import { useMemo } from "react";
-import { RepoAndUserWithCount } from "../types";
+import { ReposAndUsers } from "../types";
 import {
   mergeSearchResults,
   removeItemsWithoutId,
@@ -61,13 +61,13 @@ export const useLazyReposAndUsers = (search: string) => {
   });
 
   const mergedData = useMemo(() => {
-    const merged: RepoAndUserWithCount | undefined = mergeSearchResults(query.data);
+    const merged: ReposAndUsers | undefined = mergeSearchResults(query.data);
     if (!merged) return undefined;
 
-    merged.data = removeItemsWithoutId([...merged.data]);
-    merged.data = sortSearchQueriesById([...merged.data]);
+    const modified = { ...merged, data: removeItemsWithoutId([...merged.data]) };
+    modified.data = sortSearchQueriesById([...modified.data]);
 
-    return merged;
+    return modified;
   }, [query]);
 
   return { getData, query, mergedData };
