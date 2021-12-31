@@ -1,4 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useLazyQuery } from "@apollo/client";
 import { useMemo } from "react";
 import { RepoAndUserWithCount } from "../types";
 import {
@@ -55,8 +55,8 @@ const USERS_REPOS_QUERY = gql`
   }
 `;
 
-export const useReposAndUsers = (search: string) => {
-  const query = useQuery(USERS_REPOS_QUERY, {
+export const useLazyReposAndUsers = (search: string) => {
+  const [getData, query] = useLazyQuery(USERS_REPOS_QUERY, {
     variables: { search },
   });
 
@@ -70,5 +70,5 @@ export const useReposAndUsers = (search: string) => {
     return merged;
   }, [query]);
 
-  return { query, mergedData };
+  return { getData, query, mergedData };
 };
