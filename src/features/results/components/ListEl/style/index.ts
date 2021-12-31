@@ -5,7 +5,6 @@ export const StyledListEl = styled.li`
   width: 100%;
   border-top: 1px solid #c4c4c4;
   padding-top: 22px;
-  /* padding-bottom: 16px; */
   margin-top: 16px;
   article {
     width: 100%;

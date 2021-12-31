@@ -7,12 +7,10 @@ interface ListProps {
 
 export const List = ({ data }: ListProps) => {
   return (
-    <>
-      <ul>
-        {data.data.map((el) => (
-          <ListEl key={el.id} data={el} />
-        ))}
-      </ul>
-    </>
+    <ul>
+      {data.data.map((el) => (
+        <ListEl key={el.id} data={el} />
+      ))}
+    </ul>
   );
 };

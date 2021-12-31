@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 10px;   //1rem = 10px
   }
   body{
-    background-color: #E5E5E5;
+    background-color: #fff;
     color: ${({ theme }) => theme.colors.core.primary}
   }
   a{

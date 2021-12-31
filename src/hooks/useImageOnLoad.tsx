@@ -20,13 +20,10 @@ const useImageOnLoad = (): ImageOnLoadType => {
   const css: ImageStyle = {
     thumbnail: {
       visibility: isLoaded ? "hidden" : "visible",
-      // filter: "blur(0.1px)",
-      // transition: "visibility 0ms ease-out 500ms",
     },
 
     fullSize: {
       opacity: isLoaded ? 1 : 0,
-      // transition: "opacity 500ms ease-in 0ms",
     },
   };
 
