@@ -8,9 +8,30 @@ import {
 } from "../utils";
 
 const USERS_REPOS_QUERY = gql`
-  query searchReposAndUsers($search: String!) {
-    users: search(query: $search, type: USER, first: 7) {
+  query searchReposAndUsers(
+    $search: String!
+    $first: Int
+    $last: Int
+    $repoEndCursor: String
+    $repoStartCursor: String
+    $userEndCursor: String
+    $userStartCursor: String
+  ) {
+    users: search(
+      query: $search
+      type: USER
+      first: $first
+      last: $last
+      after: $userEndCursor
+      before: $userStartCursor
+    ) {
       dataCount: userCount
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
       edges {
         node {
           ... on User {
@@ -25,7 +46,14 @@ const USERS_REPOS_QUERY = gql`
         }
       }
     }
-    repositories: search(query: $search, type: REPOSITORY, first: 7) {
+    repositories: search(
+      query: $search
+      type: REPOSITORY
+      first: $first
+      last: $last
+      after: $repoEndCursor
+      before: $repoStartCursor
+    ) {
       dataCount: repositoryCount
       edges {
         node {
@@ -51,13 +79,33 @@ const USERS_REPOS_QUERY = gql`
           }
         }
       }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
     }
   }
 `;
 
-export const useReposAndUsers = (search: string) => {
+export const useReposAndUsers = (
+  search: string,
+  pageSize: number,
+  repoEndCursor?: string,
+  repoStartCursor?: string,
+  userEndCursor?: string,
+  userStartCursor?: string
+) => {
   const query = useQuery(USERS_REPOS_QUERY, {
-    variables: { search },
+    variables: {
+      search,
+      first: pageSize,
+      repoEndCursor,
+      repoStartCursor,
+      userEndCursor,
+      userStartCursor,
+    },
   });
 
   const mergedData = useMemo(() => {

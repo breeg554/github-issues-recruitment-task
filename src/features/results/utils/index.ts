@@ -1,19 +1,33 @@
-import { hasId, ModifyRepository, ModifyUser, Repository, User } from "../types";
+import {
+  hasId,
+  ModifyRepository,
+  ModifyUser,
+  Repository,
+  User,
+  MergedPageInfo,
+  PageInfo,
+} from "../types";
 
 export const mergeSearchResults = (allData: {
-  [name: string]: { dataCount: number; edges: any };
+  [name: string]: { dataCount: number; edges: any; pageInfo: PageInfo };
 }) => {
   if (!allData) return undefined;
 
-  return Object.keys(allData).reduce(
-    (tmp, key) => {
-      tmp.dataCount += allData[key].dataCount;
-      tmp.data = [...tmp.data, ...allData[key].edges.map((el: { node: any }) => el.node)];
+  const initData = {
+    dataCount: 0,
+    data: [] as (Repository | User)[],
+    pageInfo: {
+      users: allData["users"].pageInfo,
+      repositories: allData["repositories"].pageInfo,
+    } as MergedPageInfo,
+  };
 
-      return tmp;
-    },
-    { dataCount: 0, data: [] as (Repository | User)[] }
-  );
+  return Object.keys(allData).reduce((tmp, key) => {
+    tmp.dataCount += allData[key].dataCount;
+    tmp.data = [...tmp.data, ...allData[key].edges.map((el: { node: any }) => el.node)];
+
+    return tmp;
+  }, initData);
 };
 export const removeItemsWithoutId = (data: (Repository | User)[]) => {
   const filtered: (ModifyRepository | ModifyUser)[] = [...data].filter(hasId);
