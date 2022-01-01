@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search input component renders out and match the snapshot 1`] = `
+<div>
+  <input
+    aria-label="Search users and repositories"
+    class="sc-bdvvtL qkOuZ"
+    placeholder="Search"
+    value="abc"
+  />
+</div>
+`;

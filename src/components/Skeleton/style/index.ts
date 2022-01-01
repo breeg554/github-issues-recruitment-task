@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 const BASE_COLOR = "#d7d7d7";
 
 const shine = keyframes`
@@ -12,6 +12,9 @@ const shine = keyframes`
    
   `;
 
+const animation = css`
+  animation: ${shine} 0.7s infinite ease-in-out;
+`;
 interface Props {
   width?: string;
   height?: string;
@@ -35,11 +38,10 @@ export const Skeleton = styled.div<Props>`
     height: 100%;
     width: 50px;
     transform: translate(-50%, 0);
-    background-image: ${({ color, circle }) =>
+    background-image: ${({ color }) =>
       `linear-gradient(90deg, ${color} 0px, #dadada 40px, ${color} 80px) `};
-
     background-repeat: no-repeat;
-    animation: ${shine} 0.7s infinite ease-in-out;
+    ${({ animate }) => (animate ? animation : null)};
   }
 `;
 Skeleton.defaultProps = {
@@ -47,5 +49,5 @@ Skeleton.defaultProps = {
   height: "150px",
   color: BASE_COLOR,
   circle: false,
-  animate: false,
+  animate: true,
 };

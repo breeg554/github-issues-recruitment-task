@@ -35,7 +35,7 @@ export interface Repository {
   id?: string;
   name?: string;
   url?: string;
-  updatedAt: Date;
+  updatedAt: string;
   stargazerCount?: number;
   licenseInfo?: LicenseInfo;
   issues?: Issues;
