@@ -11,6 +11,12 @@ const init = {
         node: {},
       },
     ],
+    pageInfo: {
+      endCursor: null,
+      hasNextPage: false,
+      hasPreviousPage: false,
+      startCursor: null,
+    },
   },
   repositories: {
     dataCount: 0,
@@ -22,6 +28,12 @@ const init = {
         node: {},
       },
     ],
+    pageInfo: {
+      endCursor: null,
+      hasNextPage: false,
+      hasPreviousPage: false,
+      startCursor: null,
+    },
   },
 };
 
@@ -30,6 +42,20 @@ describe("merge search results", () => {
     expect(mergeSearchResults(init)).toStrictEqual({
       dataCount: 10,
       data: [{}, {}, {}, {}],
+      pageInfo: {
+        users: {
+          endCursor: null,
+          hasNextPage: false,
+          hasPreviousPage: false,
+          startCursor: null,
+        },
+        repositories: {
+          endCursor: null,
+          hasNextPage: false,
+          hasPreviousPage: false,
+          startCursor: null,
+        },
+      },
     });
   });
 });

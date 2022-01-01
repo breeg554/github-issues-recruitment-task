@@ -31,7 +31,6 @@ export interface Languages {
   nodes: Language[];
   __typename: string;
 }
-
 export interface Repository {
   id?: string;
   name?: string;
@@ -47,11 +46,29 @@ export interface Repository {
 export interface ModifyRepository extends Repository {
   id: string;
 }
+export interface PageInfo {
+  endCursor: string | null;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  startCursor: string | null;
+}
+export interface MergedPageInfo {
+  users: PageInfo;
+  repositories: PageInfo;
+}
 export type ReposAndUsers = {
   data: (User | Repository)[];
   dataCount: number;
+  pageInfo: MergedPageInfo;
 };
-
+export interface FetchMoreCursors {
+  userEndCursor?: string;
+  userStartCursor?: string;
+  repoEndCursor?: string;
+  repoStartCursor?: string;
+  first?: number;
+  last?: number;
+}
 export const isUser = (obj: Repository | User): obj is User => {
   return (obj as User).__typename === "User";
 };
