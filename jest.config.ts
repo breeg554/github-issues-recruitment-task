@@ -1,9 +1,11 @@
 import type { Config } from "@jest/types";
-// Sync object
+
 const config: Config.InitialOptions = {
   verbose: true,
   transform: {
-    "^.+\\.ts?$": "ts-jest",
+    "^.+\\.(t|j)sx?$": "ts-jest",
   },
+  testEnvironment: "jsdom",
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
 };
 export default config;

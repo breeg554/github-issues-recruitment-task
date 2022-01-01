@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stars count component renders basic skeleton and match the snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdvvtL gxKZRD"
+    color="#d7d7d7"
+    height="150px"
+    width="100%"
+  />
+</div>
+`;
+
+exports[`Stars count component renders skeleton with custom props and match the snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdvvtL btENuh"
+    color="#d7d7d7"
+    height="50px"
+    width="120px"
+  />
+</div>
+`;
