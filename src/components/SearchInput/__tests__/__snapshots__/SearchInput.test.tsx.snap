@@ -2,11 +2,15 @@
 
 exports[`Search input component renders out and match the snapshot 1`] = `
 <div>
-  <input
-    aria-label="Search users and repositories"
-    class="sc-bdvvtL qkOuZ"
-    placeholder="Search"
-    value="abc"
-  />
+  <div
+    class="sc-bdvvtL kPkscH"
+  >
+    <input
+      aria-label="Search users and repositories"
+      class="sc-gsDKAQ jAXgbX search-input"
+      placeholder="Search"
+      value="abc"
+    />
+  </div>
 </div>
 `;

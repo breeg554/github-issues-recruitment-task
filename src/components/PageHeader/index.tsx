@@ -5,14 +5,18 @@ import { MarkGithubIcon } from "@primer/octicons-react";
 import { Link } from "react-router-dom";
 
 export const PageHeader = () => {
-  const { searchVal, handleSetSearch } = useSearch();
+  const { searchVal, handleSetSearch, handleClearSearch } = useSearch();
   return (
     <StyledPageHeader>
       <div>
         <Link to="/" className="github-logo" aria-label="Home page">
           <MarkGithubIcon />
         </Link>
-        <SearchInput value={searchVal} onChange={handleSetSearch} />
+        <SearchInput
+          value={searchVal}
+          onChange={handleSetSearch}
+          onClear={handleClearSearch}
+        />
       </div>
     </StyledPageHeader>
   );

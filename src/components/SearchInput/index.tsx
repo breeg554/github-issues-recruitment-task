@@ -1,18 +1,28 @@
+import { XIcon } from "@primer/octicons-react";
 import React, { memo } from "react";
-import { StyledSearchInput } from "./style";
+import { StyledSearchInput, StyledSearchWrapper } from "./style";
 
 interface SearchInputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClear?: () => void;
 }
 
-export const SearchInput = memo(({ value, onChange }: SearchInputProps) => {
+export const SearchInput = memo(({ value, onChange, onClear }: SearchInputProps) => {
   return (
-    <StyledSearchInput
-      placeholder="Search"
-      value={value}
-      onChange={onChange}
-      aria-label="Search users and repositories"
-    />
+    <StyledSearchWrapper>
+      <StyledSearchInput
+        className="search-input"
+        placeholder="Search"
+        value={value}
+        onChange={onChange}
+        aria-label="Search users and repositories"
+      />
+      {onClear ? (
+        <button className="reset-search" onClick={onClear}>
+          <XIcon size={12} />
+        </button>
+      ) : null}
+    </StyledSearchWrapper>
   );
 });

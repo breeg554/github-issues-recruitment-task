@@ -6,6 +6,7 @@ interface SearchProviderProps {
 interface Context {
   searchVal: string;
   handleSetSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClearSearch: () => void;
 }
 const SearchContext = createContext<Context>(null!);
 
@@ -17,8 +18,11 @@ const SearchProvider = ({ children }: SearchProviderProps) => {
   const handleSetSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchVal(e.target.value);
   };
+  const handleClearSearch = () => {
+    setSearchVal("");
+  };
   return (
-    <SearchContext.Provider value={{ searchVal, handleSetSearch }}>
+    <SearchContext.Provider value={{ searchVal, handleSetSearch, handleClearSearch }}>
       {children}
     </SearchContext.Provider>
   );
