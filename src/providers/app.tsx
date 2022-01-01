@@ -5,7 +5,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../styled/theme";
 import { GlobalStyle } from "../styled/global";
-import { MainLayout } from "../components";
+import { ErrorMessage, MainLayout } from "../components";
 import { client } from "../lib/apollo";
 import SearchProvider from "../context/Search";
 
@@ -24,6 +24,15 @@ interface AppProviderProps {
   children: React.ReactNode;
 }
 export const AppProvider = ({ children }: AppProviderProps) => {
+  if (!process.env.REACT_APP_API_URL || !process.env.REACT_APP_GITHUB_TOKEN)
+    return (
+      <ThemeProvider theme={theme}>
+        <ErrorMessage
+          msg="The .env file is missing or environment variables are not set! Take a look at the .env.example file and see how the .env file should look like."
+          danger
+        />
+      </ThemeProvider>
+    );
   return (
     <Suspense fallback={""}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
