@@ -11,6 +11,7 @@ A simple web application that allows to search for users and repositories on Git
 - [React](https://pl.reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Apollo Client](https://www.apollographql.com/docs/react/)
+- [Github Graphql Api v4](https://docs.github.com/en/graphql/overview/explorer)
 - [Styled Components](https://styled-components.com/)
 
 ## Installation
