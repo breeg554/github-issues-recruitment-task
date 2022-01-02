@@ -12,6 +12,7 @@ export const PAGE_SIZE = 7;
 export const Dashboard = () => {
   const { searchVal } = useSearch();
   const debouncedSearchTerm: string = useDebounce<string>(searchVal, 500);
+
   const { query, mergedData } = useReposAndUsers(debouncedSearchTerm, PAGE_SIZE);
 
   const handleFetchNextPrev = (pageInfo: FetchMoreCursors) => {

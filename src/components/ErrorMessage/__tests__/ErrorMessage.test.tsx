@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
-import { theme } from "../../../styled/theme";
+import { theme } from "../../../lib/styled/theme";
 import { ErrorMessage } from "..";
 describe("Error message component", () => {
   it("renders out and match the snapshot", () => {

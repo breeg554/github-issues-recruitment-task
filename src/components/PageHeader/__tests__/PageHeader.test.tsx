@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { PageHeader } from "..";
 import SearchProvider from "../../../context/Search";
-import { theme } from "../../../styled/theme";
+import { theme } from "../../../lib/styled/theme";
 
 describe("Page header component", () => {
   it("renders out and match the snapshot", () => {
