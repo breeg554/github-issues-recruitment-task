@@ -52,17 +52,13 @@ const renderFooter = (data: User | Repository) => {
     <>
       {data.stargazerCount ? <StarsCount count={data.stargazerCount} /> : null}
 
-      {data.languages && data.languages.nodes[0] ? (
-        <RepoLanguages data={data.languages.nodes[0]} />
-      ) : null}
+      {data.languages && data.languages.nodes[0] ? <RepoLanguages data={data.languages.nodes[0]} /> : null}
 
       {data.licenseInfo ? <span>{data.licenseInfo.name}</span> : null}
 
       <span>{dayjs(data.updatedAt).fromNow()}</span>
 
-      {data.issues && data.issues.totalCount > 0 ? (
-        <RepoIssues total={data.issues.totalCount} />
-      ) : null}
+      {data.issues && data.issues.totalCount > 0 ? <RepoIssues total={data.issues.totalCount} /> : null}
     </>
   );
 };

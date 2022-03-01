@@ -1,5 +1,5 @@
-import { Skeleton } from "../../../../components";
 import { StyledProfileSkeleton } from "./style";
+import { Skeleton } from "../../../../components";
 
 export const ProfileSkeleton = () => {
   return (
