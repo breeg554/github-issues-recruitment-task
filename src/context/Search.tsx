@@ -8,7 +8,11 @@ interface Context {
   handleSetSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleClearSearch: () => void;
 }
-const SearchContext = createContext<Context>(null!);
+export const SearchContext = createContext<Context>({
+  searchVal: "",
+  handleClearSearch: () => null,
+  handleSetSearch: () => null,
+});
 
 export const useSearch = () => useContext(SearchContext);
 

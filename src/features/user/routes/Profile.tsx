@@ -1,10 +1,10 @@
-import { PeopleIcon } from "@primer/octicons-react";
-import { useParams } from "react-router-dom";
-import { Avatar, ErrorMessage, StarsCount } from "../../../components";
-import { formatNumberByComma } from "../../../utils/transform";
-import { useUser } from "../api";
-import { ProfileSkeleton } from "../components";
-import { StyledProfile } from "./style";
+import { PeopleIcon } from '@primer/octicons-react';
+import { useParams } from 'react-router-dom';
+import { Avatar, ErrorMessage, StarsCount } from '../../../components';
+import { formatNumberByComma } from '../../../utils/transform';
+import { useUser } from '../api';
+import { ProfileSkeleton } from '../components';
+import { StyledProfile } from './style';
 
 export const Profile = () => {
   const { login } = useParams();
