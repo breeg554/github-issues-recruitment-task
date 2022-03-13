@@ -51,8 +51,13 @@
     "@babel/preset-typescript": "^7.16.7",
     "@types/jest": "^27.4.0",
     "@types/styled-components": "^5.1.19",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
     "babel-jest": "^27.4.5",
+    "eslint": "^8.11.0",
+    "eslint-plugin-react": "^7.29.3",
     "jest": "^27.4.5",
+    "prettier": "2.5.1",
     "ts-jest": "^27.1.2",
     "ts-node": "^10.4.0"
   }
