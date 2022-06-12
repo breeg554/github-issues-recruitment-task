@@ -7,6 +7,5 @@ interface Props {
 export const StyledErrorMessage = styled.p<Props>`
   font-size: 14px;
 
-  
   color: ${({ theme, danger }) => (danger ? theme.colors.core.danger : theme.colors.core.primary)};
 `;
