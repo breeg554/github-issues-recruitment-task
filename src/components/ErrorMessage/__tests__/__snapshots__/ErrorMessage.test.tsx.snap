@@ -3,7 +3,7 @@
 exports[`Error message component renders out and match the snapshot 1`] = `
 <div>
   <p
-    class="sc-bdvvtL gIhfHx"
+    class="sc-bdvvtL dTDJwP"
   >
     test
   </p>
@@ -13,7 +13,7 @@ exports[`Error message component renders out and match the snapshot 1`] = `
 exports[`Error message component renders out the danger version and match the snapshot 1`] = `
 <div>
   <p
-    class="sc-bdvvtL iooqEn"
+    class="sc-bdvvtL hEzbBJ"
   >
     test
   </p>

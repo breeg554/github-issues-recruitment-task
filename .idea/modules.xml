@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gh-issues-rt.iml" filepath="$PROJECT_DIR$/.idea/gh-issues-rt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/recuriment-task.iml" filepath="$PROJECT_DIR$/.idea/recuriment-task.iml" />
     </modules>
   </component>
 </project>
