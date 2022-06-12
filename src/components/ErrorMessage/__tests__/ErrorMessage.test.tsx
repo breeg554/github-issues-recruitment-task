@@ -15,7 +15,7 @@ describe("Error message component", () => {
   it("renders out the danger version and match the snapshot", () => {
     const { container } = render(
       <ThemeProvider theme={theme}>
-        <ErrorMessage msg={"test"} danger />
+        <ErrorMessage msg={"test1"} danger />
       </ThemeProvider>
     );
 
