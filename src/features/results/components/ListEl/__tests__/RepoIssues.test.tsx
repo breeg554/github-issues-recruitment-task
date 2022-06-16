@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { RepoIssues } from "../RepoIssues";
-describe("Repo issues component", () => {
+describe.skip("Repo issues component", () => {
   it("renders out with 5 open issues", () => {
     render(<RepoIssues total={5} />);
 
